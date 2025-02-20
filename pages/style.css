@@ -1,6 +1,8 @@
+/*
+
 MIT License
 
-Copyright (c) 2025 JustDeveloper <https://justdeveloper.is-a.dev>
+Copyright (c) 2025 JustDeveloper <https://justdeveloper.is-a.dev/>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -19,3 +21,50 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+*/
+
+body, body * {
+    font-family: monospace;
+    background-color: #161616;
+    color: #ededed;
+  }
+  a, .subdomain-link {
+    color: #6e3bf3 !important;
+    text-decoration: underline;
+    background-color: transparent !important;
+  }
+  span {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+    width: 100%;
+    border-bottom: 1px solid #6e2bf34f;
+  }
+  ::marker {
+    color: #555555;
+  }
+  ::-moz-selection {
+    color: #fff;
+    background: #6e3bf3;
+  }
+  ::selection {
+    color: #fff;
+    background: #6e3bf3;
+  }
+  ::-webkit-scrollbar {
+    height: .625rem;
+    width: .625rem;
+  }
+  ::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    border-radius: 9999px;
+    border: 1px solid transparent;
+    background-color: #6e3bf3;
+    background-clip: padding-box;
+  }
