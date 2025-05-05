@@ -1,0 +1,14 @@
+:root {
+    --bg: #101010;
+}
+.l {
+    --bg: #f0f0f0;
+}
+
+* {
+    transition: 300ms;
+}
+
+body {
+    background-color: var(--bg);
+}
