@@ -1,6 +1,11 @@
 :root {
     --bg: #121212;
     --cl: #f0f0f0;
+    --kb: #2196F3;
+    --tf: 'Rubik', sans-serif;
+    --bh: 32px;
+    --bp: 0.5em;
+    --br: 6px;
 }
 .l {
     --bg: #f0f0f0;
@@ -11,6 +16,14 @@
     transition: 300ms;
     color: var(--cl);
     border-color: var(--cl);
+    font-family: var(--tf);
+    outline-color: transparent;
+    outline-width: 3px;
+    outline-offset: 3px;
+    outline-style: solid;
+}
+*.keyboard:not(a):not(button):not(input):focus {
+    outline-color: var(--kb);
 }
 
 body {
@@ -36,6 +49,51 @@ body {
     border-radius: 10px;
 }
 
+a, button {
+    cursor: pointer;
+    text-decoration: underline;
+    text-decoration-color: transparent;
+}
+button {
+    text-decoration-thickness: 3px;
+}
+a, button, input {
+    font-family: var(--tf);
+    border-radius: var(--br);
+}
+button, input {
+    height: var(--bh);
+    background-color: var(--cl);
+    color: var(--bg);
+    border: none;
+    margin: 0;
+    padding: 0;
+    padding-left: var(--bp);
+    padding-right: var(--bp);
+    font-family: var(--tf);
+    font-size: 14px;
+    font-weight: 400;
+}
+button:hover, input:hover {
+    opacity: 0.85;
+}
+button:active {
+    opacity: 0.75 !important;
+    transition: 50ms;
+}
+a:active, button:active {
+    outline-color: transparent !important;
+}
+a.keyboard:focus {
+    text-decoration-color: var(--cl);
+    outline-color: var(--kb);
+}
+button.keyboard:focus {
+    opacity: 1;
+    text-decoration-color: var(--bg);
+    outline-color: var(--kb);
+}
+
 @keyframes line {
     0%, 0.1% {
         width: 0%;
@@ -51,6 +109,14 @@ body {
     100% {
         width: 0%;
         left: 100%;
+    }
+}
+@keyframes noline {
+    from {
+        width: 100%;
+    }
+    to {
+        width: 0%;
     }
 }
 .navbar {
@@ -76,6 +142,13 @@ body {
     overflow: hidden;
     overflow-x: auto;
     justify-content: space-between;
+    cursor: default;
+    user-select: none;
+    @media(max-width: 700px) {
+        padding-left: 30px;
+        padding-right: 30px;
+        width: calc(100% - 60px);
+    }
     .heading {
         display: flex;
         flex-direction: row;
@@ -103,6 +176,8 @@ body {
         a {
             opacity: 0.6;
             transition: 300ms;
+            filter: hue-rotate(1deg);
+            -webkit-filter: hue-rotate(1deg);
         }
         a:before {
             content: '';
@@ -114,14 +189,15 @@ body {
             background-color: var(--cl);
             transition: 150ms;
             z-index: -1;
+            animation: 300ms noline ease-out 1;
         }
-        a:hover {
+        a:hover:not(:focus) {
             opacity: 1;
             filter: drop-shadow(0px 0px 2px);
             -webkit-filter: drop-shadow(0px 0px 2px);
             transition: 150ms;
         }
-        a:hover:before {
+        a:hover:not(:focus):before {
             width: 100%;
             left: 0%;
             animation: 6s line linear infinite;
@@ -133,26 +209,91 @@ body {
             content: '↗';
             position: fixed;
             top: 0%;
-            font-family: 'Murecho', monospace;
+            font-family: 'Murecho', var(--tf), monospace, sans-serif;
             font-weight: 900;
             font-size: 11px;
             translate: 2px -20%;
             opacity: 0.5;
             transition: 200ms;
         }
-        a#ext:hover:after {
-            translate: 2px -30%;
+        a#ext:hover:not(:focus):after {
+            translate: 2px -25%;
+        }
+        a:focus {
+            opacity: 1;
         }
     }
     .buttons {
-        
+        display: flex;
+        flex-direction: row;
+        align-content: center;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 10px;
+        position: fixed;
+        right: 15px;
+        z-index: 1;
+        @media(max-width: 700px) {
+            opacity: 0;
+        }
+        input {
+            position: absolute;
+            right: calc(100% + 10px);
+            opacity: 0;
+            pointer-events: none;
+            user-select: none;
+            z-index: -1;
+            @media(min-width: 1000px) {
+                opacity: 1;
+                pointer-events: all;
+                user-select: all;
+                z-index: 0;
+            }
+        }
+    }
+}
+.navbar:has(.buttons button) .links {
+    @media(max-width: 700px) {
+        left: initial;
+        right: 30px;
+        translate: 0;
+    }
+    @media(min-width: 1000px) {
+        left: 33%;
+        translate: 0;
+    }
+    @media(min-width: 1200px) {
+        left: 33%;
+        translate: 100%;
+    }
+    @media(min-width: 1600px) {
+        left: 50%;
+        translate: -50%;
+    }
+}
+.navbar:not(:has(.buttons button)) {
+    @media(max-width: 1000px) {
+        padding-left: 30px;
+        padding-right: 30px;
+        width: calc(100% - 60px);
+    }
+    .links {
+        @media(max-width: 1000px) {
+            left: initial;
+            right: 30px;
+            translate: 0;
+        }
+        @media(min-width: 1000px) {
+            left: 50%;
+            translate: -50%;
+        }
     }
 }
 .navbar.scroll {
     filter: invert();
     -webkit-filter: invert();
     border-block-width: 0px;
-    border-bottom-right-radius: 5px;
+    border-bottom-right-radius: var(--br);
     .heading img {
         filter: invert();
         -webkit-filter: invert();
