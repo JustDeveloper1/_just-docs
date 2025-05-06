@@ -22,9 +22,6 @@
     outline-offset: 3px;
     outline-style: solid;
 }
-*.keyboard:not(a):not(button):not(input):focus {
-    outline-color: var(--kb);
-}
 
 body {
     background-color: var(--bg);
@@ -81,14 +78,11 @@ button:active {
     opacity: 0.75 !important;
     transition: 50ms;
 }
-a:active, button:active {
-    outline-color: transparent !important;
-}
-a.keyboard:focus {
+a:focus-visible {
     text-decoration-color: var(--cl);
     outline-color: var(--kb);
 }
-button.keyboard:focus {
+button:focus-visible {
     opacity: 1;
     text-decoration-color: var(--bg);
     outline-color: var(--kb);
