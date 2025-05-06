@@ -11,7 +11,7 @@ let focused;
 document.addEventListener('keydown', function(event) {
     if (event.key === 'Tab') {
         const focusedElement = document.activeElement;
-        if (focusedElement !== focused) {
+        if (focused && focusedElement !== focused) {
             focused.classList.remove('keyboard');
         }
         focused = focusedElement;
