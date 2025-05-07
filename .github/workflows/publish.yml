@@ -24,7 +24,7 @@ jobs:
         uses: actions/configure-pages@v5
       - name: Install ImageMagick
         id: imagemagic
-        run: sudo apt-get install imagemagick
+        run: sudo apt-get install imagemagick --fix-missing
       - name: Fix img
         id: fiximg
         run: |
