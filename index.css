@@ -9,14 +9,18 @@
     --mp: 170px;
     --mn: 10px;
     --nh: center;
+    --fr: 10px;
+    --md: #ffffff26;
     @media(min-width: 1250px) {
         --mn: 50px;
         --mp: 250px;
         --nh: left;
+        --fr: 50px;
     }
     @media(min-width: 1500px) {
         --mn: 200px;
         --mp: 400px;
+        --fr: calc(100% + 15px);
     }
 }
 .l {
@@ -367,21 +371,111 @@ main nav {
     padding-left: 10px;
     padding-right: 10px;
 }
-.left {
-    padding-left: var(--mn)
+nav.left {
+    padding-left: var(--mn);
+    width: calc(var(--mp) - 5px);
 }
-.right {
-    padding-right: var(--mn)
+nav.right {
+    padding-right: var(--mn);
+    left: 100%;
+    z-index: 1;
+    div {
+        width: calc(100% - 15px - var(--mn));
+        padding-top: 50px;
+        translate: calc(var(--fr) + 15px);
+        span {
+            display: block;
+            position: relative;
+            height: 19px;
+            z-index: 3;
+        }
+        ul {
+            padding-left: 10px;
+            z-index: 2;
+            position: relative;
+            background-color: var(--md);
+            li {
+                height: 20px;
+                margin-top: 10px;
+                background-color: var(--bg);
+            }
+            li.secondary {
+                translate: 10px;
+                width: calc(100% - 10px);
+            }
+            li:after, li:before {
+                content: '';
+                background-color: var(--bg);
+                width: 4px;
+                position: fixed;
+                height: 32px;
+                z-index: -1;
+            }
+            li:after {
+                right: 100%;
+                width: calc(100% + 4px);
+                translate: calc(100% - 3.8px) calc(-100% + 1px);
+            }
+            li:not(.secondary):after {
+                left: 0%;
+                right: initial;
+                translate: 6px calc(-100% + 2px);
+            }
+            li:before {
+                translate: -10px -10px;
+            }
+            li.secondary:before {
+                height: 29px;
+                translate: -26px -7px;
+                width: 20px;
+            }
+            li.secondary:after {
+                height: 38px;
+                translate: calc(100% - 3.8px) calc(-100% + 7px);
+            }
+            li.secondary:has(+ .secondary):before {
+                height: 40px;
+            }
+            li.secondary + li:not(.secondary):after {
+                height: 27px;
+            }
+            span {
+                padding-left: 5px;
+            }
+        }
+        ul:after {
+            content: '';
+            position: fixed;
+            width: 5px;
+            height: 100%;
+            top: 0%;
+            left: 0%;
+            background-color: var(--bg);
+            translate: -1px;
+        }
+        .slider {
+            position: fixed;
+            z-index: 1;
+            top: 79px;
+            height: 20px;
+            width: 100%;
+            left: 0%;
+            background-color: var(--cl);
+            translate: 0px calc(var(--hc) * 30px);
+            padding: 0;
+        }
+    }
 }
 #main {
-    margin-top: -20px
+    margin-top: -20px;
 }
 .main {
     position: relative;
     top: 4px;
     padding-left: var(--mp);
-    padding-right: var(--mp);
-    z-index: 1;
+    padding-right: calc(var(--mp) - 10px);
+    z-index: 3;
+    translate: -5px;
 }
 main nav ul:has(ul) {
     width: calc(100% - 10px - var(--mn));
@@ -415,4 +509,36 @@ main nav ul ul {
 }
 main nav li {
     display: block;
+}
+
+
+
+.debug {
+    * {
+        outline-color: #888888;
+        outline-offset: 0;
+        outline-width: 1px;
+        outline-style: dashed;
+    }
+    .main {
+        z-index: 2;
+    }
+    .main span {
+        background-color: blue;
+        width: 100%;
+        display: block;
+    }
+    .left, .right {
+        background-color: #ff000080;
+    }
+    .left ul, .right div {
+        background-color: red;
+    }
+    .navbar {
+        background-color: green;
+    }
+    nav.right div *:not(.slider), nav.right div *:after, nav.right div *:before {
+        background-color: transparent;
+        color: black;
+    }
 }
