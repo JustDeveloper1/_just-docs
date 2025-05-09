@@ -11,6 +11,16 @@
     --nh: center;
     --fr: 10px;
     --md: #ffffff26;
+    --nt: #4964ff80;
+    --nb: #4964ff2b;
+    --tt: #4992ff80;
+    --tb: #4992ff2b;
+    --it: #6d49ff80;
+    --ib: #6d49ff2b;
+    --wt: #ffd84980;
+    --wb: #ffd8492b;
+    --ct: #ff624980;
+    --cb: #ff62492b;
     @media(min-width: 1250px) {
         --mn: 50px;
         --mp: 250px;
@@ -26,7 +36,9 @@
 .l {
     --bg: #f0f0f0;
     --cl: #121212;
-    --md: #00000026
+    --md: #00000026;
+    --wt: #ffb00080;
+    --wb: #ffb0002b;
 }
 
 * {
@@ -379,6 +391,7 @@ main nav {
     padding-top: 10px;
     padding-left: 10px;
     padding-right: 10px;
+    user-select: none;
 }
 nav.left {
     padding-left: var(--mn);
@@ -397,6 +410,9 @@ nav.right {
             position: relative;
             height: 19px;
             z-index: 3;
+        }
+        > span {
+            pointer-events: none;
         }
         ul {
             padding-left: 10px;
@@ -592,6 +608,58 @@ code {
     width: calc(100% - 10px);
     padding: 5px;
     line-height: 18px;
+}
+.note, .ntip, .impr, .warn, .caut {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding-top: 35px;
+    line-height: 20px;
+}
+.note:before, .ntip:before, .impr:before, .warn:before, .caut:before {
+    position: fixed;
+    translate: 0px -25px;
+    font-weight: 500;
+    height: 20px;
+}
+.note {
+    background-color: var(--nb);
+    border-color: var(--nt) !important;
+}
+.note:before {
+    content: 'Note';
+    color: var(--nt);
+}
+.ntip {
+    background-color: var(--tb);
+    border-color: var(--tt) !important;
+}
+.ntip:before {
+    content: 'Tip';
+    color: var(--tt);
+}
+.impr {
+    background-color: var(--ib);
+    border-color: var(--it) !important;
+}
+.impr:before {
+    content: 'Important';
+    color: var(--it);
+}
+.warn {
+    background-color: var(--wb);
+    border-color: var(--wt) !important;
+}
+.warn:before {
+    content: 'Warning';
+    color: var(--wt);
+}
+.caut {
+    background-color: var(--cb);
+    border-color: var(--ct) !important;
+}
+.caut:before {
+    content: 'Caution';
+    color: var(--ct);
 }
 
 
