@@ -26,6 +26,7 @@
 .l {
     --bg: #f0f0f0;
     --cl: #121212;
+    --md: #00000026
 }
 
 * {
@@ -366,7 +367,7 @@ main nav {
     top: 64px;
     height: 0;
     width: var(--mp);
-    z-index: 2;
+    z-index: 3;
     padding-top: 10px;
     padding-left: 10px;
     padding-right: 10px;
@@ -378,7 +379,7 @@ nav.left {
 nav.right {
     padding-right: var(--mn);
     left: 100%;
-    z-index: 1;
+    z-index: 2;
     div {
         width: calc(100% - 15px - var(--mn));
         padding-top: 50px;
@@ -474,8 +475,9 @@ nav.right {
     top: 4px;
     padding-left: var(--mp);
     padding-right: calc(var(--mp) - 10px);
-    z-index: 3;
+    z-index: 1;
     translate: -5px;
+    padding-bottom: 50px;
 }
 main nav ul:has(ul) {
     width: calc(100% - 10px - var(--mn));
@@ -511,6 +513,72 @@ main nav li {
     display: block;
 }
 
+.main:before {
+    content: '';
+    position: fixed;
+    top: -28px;
+    width: 1px;
+    height: calc(100% + 28px);
+    background-color: var(--md);
+    translate: -10px;
+    opacity: 0.5;
+}
+blockquote {
+    display: block;
+    margin: 0;
+    margin-top: 10px;
+    border-color: var(--md);
+    border-style: solid;
+    border-width: 0;
+    border-left-width: 5px;
+    padding-left: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    blockquote {
+        opacity: 0.75;
+    }
+}
+blockquote:hover {
+    border-color: var(--cl);
+    opacity: 1;
+}
+code {
+    background-color: var(--md);
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 10px;
+    font-family: monospace;
+}
+.line {
+    width: 100%;
+    height: 5px;
+    background-color: var(--md);
+    margin-top: 20px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+.line:after {
+    content: '';
+    position: relative;
+    display: block;
+    top: 0%;
+    left: -120%;
+    width: 100%;
+    height: 100%;
+    background-color: var(--cl);
+    transition: 1s;
+    transition-delay: 400ms;
+    transition-timing-function: ease-in-out;
+}
+.line, .line:after {
+    border-radius: 10px;
+}
+.line:hover:after {
+    left: 120%;
+    transition-delay: 0ms;
+}
 
 
 .debug {
