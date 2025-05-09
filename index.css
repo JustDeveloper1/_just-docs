@@ -99,6 +99,10 @@ button, input {
     font-size: 14px;
     font-weight: 400;
 }
+.l button, .l input {
+    background-color: var(--md);
+    color: var(--cl);
+}
 button:hover, input:hover {
     opacity: 0.85;
 }
@@ -114,6 +118,10 @@ button:focus-visible {
     opacity: 1;
     text-decoration-color: var(--bg);
     outline-color: var(--kb);
+}
+input:placeholder-shown {
+    color: var(--md);
+    opacity: 0.9;
 }
 
 @keyframes line {
@@ -548,7 +556,7 @@ code {
     background-color: var(--md);
     padding-left: 5px;
     padding-right: 5px;
-    border-radius: 10px;
+    border-radius: 5px;
     font-family: monospace;
 }
 .line {
@@ -578,6 +586,12 @@ code {
 .line:hover:after {
     left: 120%;
     transition-delay: 0ms;
+}
+.code {
+    display: block;
+    width: calc(100% - 10px);
+    padding: 5px;
+    line-height: 18px;
 }
 
 
