@@ -402,6 +402,9 @@ nav.right {
     padding-right: var(--mn);
     left: 100%;
     z-index: 2;
+    @media(max-width: 700px) {
+        display: none;
+    }
     div {
         width: calc(100% - 15px - var(--mn));
         padding-top: 50px;
@@ -505,6 +508,9 @@ nav.right {
     z-index: 1;
     translate: -5px;
     padding-bottom: 50px;
+    @media (max-width: 700px) {
+        padding-right: 0px;
+    }
 }
 main nav ul:has(ul) {
     width: calc(100% - 10px - var(--mn));
@@ -512,6 +518,8 @@ main nav ul:has(ul) {
     display: flex;
     flex-direction: column;
     padding-top: 50px;
+    overflow-y: auto;
+    max-height: calc(100vh - 189px);
 }
 main nav ul {
     margin: 0;
@@ -688,7 +696,37 @@ footer {
             aspect-ratio: 1;
             border-radius: 50%;
             background-color: var(--md);
+            padding: 0;
+            max-width: 20px;
+            color: var(--cl);
+            font-family: var(--tf);
+            font-weight: 600;
+            svg {
+                position: relative;
+                width: 20px;
+                top: 50%;
+                left: 50%;
+                translate: -50% -50%;
+                scale: 0.75;
+                opacity: 0.75;
+                fill: var(--cl);
+                transition: 700ms;
+            }
         }
+        button:hover svg {
+            transform: rotate(10deg);
+            -webkit-transform: rotate(10deg);
+        }
+        button:focus-visible {
+            outline-offset: 0;
+            background-color: var(--kb);
+        }
+    }
+    div:has(button:focus-visible) {
+        outline-style: solid;
+        outline-width: 5px;
+        outline-offset: 5px;
+        outline-color: var(--cl);
     }
     div, button {
         border: 1px solid var(--md);
@@ -706,6 +744,24 @@ footer:before {
 }
 html.l:not(.a) #l, html:not(.l):not(.a) #d, html.a #a{
     border-color: var(--cl)
+}
+#l svg circle {
+    fill: var(--cl);
+    scale: 0.9;
+    translate: 5% 5%;
+}
+#d {
+    transform: rotate(5deg);
+    -webkit-transform: rotate(5deg);
+}
+#d svg {
+    scale: 0.7;
+}
+#a {
+    text-align: center;
+    vertical-align: middle;
+    align-content: center;
+    align-items: center;
 }
 
 .debug {

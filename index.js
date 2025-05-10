@@ -3,7 +3,7 @@ const scrll = localStorage.getItem('s' + page_);
 const theme = localStorage.getItem('t');
 const main_ = 'html > body > main > div#main > div.main';
 
-// navbar + right sidebar
+// navbar + sidebars
 window.onscroll = function() {
     if (document.body.scrollTop > 150 || document.documentElement.scrollTop > 150) {
         document.querySelector(".navbar").classList.add("scroll");
@@ -25,6 +25,15 @@ window.onscroll = function() {
     });
     document.body.style.setProperty('--hc', headerIndex >= 0 ? headerIndex : 0);
 };
+document.documentElement.addEventListener('scroll', event => {
+    const {scrollHeight, scrollTop, clientHeight} = event.target;
+
+    if (Math.abs(scrollHeight - clientHeight - scrollTop) < 1) {
+        document.body.classList.add('stb');
+    } else {
+        document.body.classList.remove('stb');
+    }
+});
 
 if (scrll) {
     document.documentElement.scrollTo(0, scrll);
