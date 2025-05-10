@@ -28,7 +28,7 @@ window.onscroll = function() {
 document.documentElement.addEventListener('scroll', () => {
     const { scrollHeight, scrollTop, clientHeight } = document.documentElement;
 
-    if (Math.abs(scrollHeight - clientHeight - scrollTop) < 1) {
+    if (scrollTop + clientHeight >= scrollHeight) {
         document.body.classList.add('stb');
     } else {
         document.body.classList.remove('stb');
