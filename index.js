@@ -7,7 +7,7 @@ if (document.body.scrollTop > 150 || document.documentElement.scrollTop > 150) {
 };
 window.addEventListener('scroll', function() {
     const elements = document.querySelectorAll('h1, h2, h3');
-    const b = false;
+    var b = false;
     elements.forEach((element, index) => {
         const rect = element.getBoundingClientRect();
         const a = ((rect.top + rect.height / 2) <= (window.innerHeight / 2));
