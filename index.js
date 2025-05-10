@@ -4,7 +4,7 @@ const theme = localStorage.getItem('t');
 const main_ = 'html > body > main > div#main > div.main';
 
 // navbar + sidebars
-window.onscroll = function() {
+window.addEventListener('scroll', () => {
     if (document.body.scrollTop > 150 || document.documentElement.scrollTop > 150) {
         document.querySelector(".navbar").classList.add("scroll");
     } else {
@@ -24,10 +24,8 @@ window.onscroll = function() {
         }
     });
     document.body.style.setProperty('--hc', headerIndex >= 0 ? headerIndex : 0);
-};
-document.documentElement.addEventListener('scroll', () => {
-    const { scrollHeight, scrollTop, clientHeight } = document.documentElement;
 
+    const { scrollHeight, scrollTop, clientHeight } = document.documentElement;
     if (scrollTop + clientHeight >= scrollHeight) {
         document.body.classList.add('stb');
     } else {
