@@ -5,9 +5,9 @@ window.onscroll = function() {
         document.querySelector(".navbar").classList.remove("scroll");
     }
 };
-
+const main_ = 'html > body > main > div#main > div.main'
 window.addEventListener('scroll', function() {
-    const elements = document.querySelectorAll('h1, h2, h3');
+    const elements = document.querySelectorAll(`${main_} h1, ${main_} h2, ${main_} h3`);
     let headerIndex = -1;
 
     elements.forEach((element, index) => {
