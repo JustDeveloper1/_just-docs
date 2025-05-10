@@ -25,8 +25,8 @@ window.onscroll = function() {
     });
     document.body.style.setProperty('--hc', headerIndex >= 0 ? headerIndex : 0);
 };
-document.documentElement.addEventListener('scroll', event => {
-    const {scrollHeight, scrollTop, clientHeight} = event.target;
+document.documentElement.addEventListener('scroll', () => {
+    const { scrollHeight, scrollTop, clientHeight } = document.documentElement;
 
     if (Math.abs(scrollHeight - clientHeight - scrollTop) < 1) {
         document.body.classList.add('stb');
