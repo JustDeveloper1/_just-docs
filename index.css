@@ -21,6 +21,7 @@
     --wb: #ffd8492b;
     --ct: #ff624980;
     --cb: #ff62492b;
+    --sb: 62px;
     @media(min-width: 1250px) {
         --mn: 50px;
         --mp: 250px;
@@ -39,6 +40,9 @@
     --md: #00000026;
     --wt: #ffb00080;
     --wb: #ffb0002b;
+}
+.stb {
+    --sb: 0px;
 }
 
 * {
@@ -519,7 +523,7 @@ main nav ul:has(ul) {
     flex-direction: column;
     padding-top: 50px;
     overflow-y: auto;
-    max-height: calc(100vh - 189px);
+    max-height: calc(100vh - 189px + var(--sb));
 }
 main nav ul {
     margin: 0;
