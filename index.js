@@ -97,9 +97,14 @@ if (theme && theme == 'l') {
     getnsettheme()
 }
 
-const ltb = document.getElementById('l');
-const dtb = document.getElementById('d');
-const atb = document.getElementById('a');
+let ltb = document.getElementById('l');
+let dtb = document.getElementById('d');
+let atb = document.getElementById('a');
+while (!ltb || !dtb || !atb) {
+    ltb = document.getElementById('l');
+    dtb = document.getElementById('d');
+    atb = document.getElementById('a');
+}
 ltb.addEventListener('click', () => {
     document.documentElement.classList.add('l');
     localStorage.setItem('t', 'l');
