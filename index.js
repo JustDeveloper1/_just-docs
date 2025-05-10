@@ -11,9 +11,9 @@ window.addEventListener('scroll', function() {
         const rect = element.getBoundingClientRect();
         const a = ((rect.top + rect.height / 2) <= (window.innerHeight / 2));
         if (a) {
-            
-        } else {
             document.body.style.setProperty('--hc', index);
+        } else {
+            document.body.style.setProperty('--hc', 0);
         }
     });
 });
