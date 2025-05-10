@@ -1,23 +1,23 @@
 window.onscroll = function() {
-if (document.body.scrollTop > 150 || document.documentElement.scrollTop > 150) {
-    document.querySelector(".navbar").classList.add("scroll");
+    if (document.body.scrollTop > 150 || document.documentElement.scrollTop > 150) {
+        document.querySelector(".navbar").classList.add("scroll");
     } else {
-    document.querySelector(".navbar").classList.remove("scroll");
+        document.querySelector(".navbar").classList.remove("scroll");
     }
 };
+
 window.addEventListener('scroll', function() {
     const elements = document.querySelectorAll('h1, h2, h3');
-    var b = false;
+    let headerIndex = -1;
+
     elements.forEach((element, index) => {
         const rect = element.getBoundingClientRect();
-        const a = ((rect.top + rect.height / 2) <= (window.innerHeight / 2));
-        if (a) {
-            document.body.style.setProperty('--hc', index);
-        } else {
-            b = true
+        const isInView = (rect.top + rect.height / 2) <= (window.innerHeight / 2);
+        
+        if (isInView) {
+            headerIndex = index;
         }
     });
-    if (!b) {
-        document.body.style.setProperty('--hc', 0);
-    }
+
+    document.body.style.setProperty('--hc', headerIndex >= 0 ? headerIndex : 0);
 });
