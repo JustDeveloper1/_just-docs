@@ -97,23 +97,25 @@ if (theme && theme == 'l') {
     getnsettheme()
 }
 
-let ltb = document.getElementById('l');
-let dtb = document.getElementById('d');
-let atb = document.getElementById('a');
-while (!ltb || !dtb || !atb) {
-    ltb = document.getElementById('l');
-    dtb = document.getElementById('d');
-    atb = document.getElementById('a');
-}
-ltb.addEventListener('click', () => {
-    document.documentElement.classList.add('l');
-    localStorage.setItem('t', 'l');
-});
-dtb.addEventListener('click', () => {
-    document.documentElement.classList.remove('l');
-    localStorage.setItem('t', 'd');
-});
-atb.addEventListener('click', () => {
-    localStorage.setItem('t', 'a');
-    autotheme()
+document.addEventListener('DOMContentLoaded', () => {
+    let ltb = document.getElementById('l');
+    let dtb = document.getElementById('d');
+    let atb = document.getElementById('a');
+
+    if (ltb && dtb && atb) {
+        ltb.addEventListener('click', () => {
+            document.documentElement.classList.add('l');
+            localStorage.setItem('t', 'l');
+        });
+
+        dtb.addEventListener('click', () => {
+            document.documentElement.classList.remove('l');
+            localStorage.setItem('t', 'd');
+        });
+
+        atb.addEventListener('click', () => {
+            localStorage.setItem('t', 'a');
+            autotheme();
+        });
+    }
 });
