@@ -90,10 +90,12 @@ const autotheme = () => {
 
 if (theme && theme == 'l') {
     document.documentElement.classList.add('l');
+    document.documentElement.classList.remove('a');
 } else if (theme && theme == 'a') {
-    localStorage.setItem('t', 'a');
+    document.documentElement.classList.add('a');
     autotheme()
 } else {
+    document.documentElement.classList.remove('a');
     getnsettheme()
 }
 
@@ -105,15 +107,18 @@ document.addEventListener('DOMContentLoaded', () => {
     if (ltb && dtb && atb) {
         ltb.addEventListener('click', () => {
             document.documentElement.classList.add('l');
+            document.documentElement.classList.remove('a');
             localStorage.setItem('t', 'l');
         });
 
         dtb.addEventListener('click', () => {
             document.documentElement.classList.remove('l');
+            document.documentElement.classList.remove('a');
             localStorage.setItem('t', 'd');
         });
 
         atb.addEventListener('click', () => {
+            document.documentElement.classList.add('a');
             localStorage.setItem('t', 'a');
             autotheme();
         });

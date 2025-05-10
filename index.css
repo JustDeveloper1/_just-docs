@@ -704,6 +704,9 @@ footer:before {
     background-color: var(--md);
     opacity: 0.5;
 }
+html.l:not(.a) #l, html:not(.l):not(.a) #d, html.a #a{
+    border-color: var(--cl)
+}
 
 .debug {
     * {
