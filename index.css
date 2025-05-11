@@ -569,6 +569,9 @@ main nav li {
     -webkit-filter: none;
     filter: none;
 }
+nav.left > ul > li > span {
+    margin-bottom: 15px;
+}
 
 .main:before {
     content: '';
