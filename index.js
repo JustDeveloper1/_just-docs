@@ -2,7 +2,7 @@ try {
 const page_ = 'p' + window.location.pathname;
 const scrll = localStorage.getItem('s' + page_);
 const theme = localStorage.getItem('t');
-const main_ = 'html > body > main > div#main > div.main';
+const main_ = 'html > body > main > div#main > article.main';
 function isIOS() {
     return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 }
@@ -41,7 +41,7 @@ if (scrll) {
     document.documentElement.scrollTo(0, scrll);
 }
 
-let startX;
+let swipe;
 function handleSwipeLeft() {
     document.body.classList.remove('navleft');
 }
@@ -49,16 +49,20 @@ function handleSwipeRight() {
     document.body.classList.add('navleft');
 }
 document.addEventListener('touchstart', function(event) {
-    startX = event.touches[0].clientX;
+    swipe = [event.touches[0].clientX, event.touches[0].clientY];
 }, false);
 document.addEventListener('touchend', function(event) {
     const endX = event.changedTouches[0].clientX;
-    const distance = endX - startX;
+    const endY = event.changedTouches[0].clientY;
+    const distanceX = endX - swipe[0];
+    const distanceY = endY - swipe[1];
 
-    if (distance > 50) {
-        handleSwipeRight();
-    } else if (distance < -50) {
-        handleSwipeLeft();
+    if (distanceY < 35 && distanceY > -35) {
+        if (distanceX > 50) {
+            handleSwipeRight();
+        } else if (distanceX < -50) {
+            handleSwipeLeft();
+        }
     }
 }, false);
 
