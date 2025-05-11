@@ -551,7 +551,7 @@ main nav ul ul {
 main nav li {
     display: block;
 }
-.l .ios .navbar .heading {
+.ios .navbar .heading {
     -webkit-filter: none;
     filter: none;
 }
@@ -696,39 +696,39 @@ footer {
         height: 20px;
     }
     div {
-        border-radius: 10px;
-        overflow: hidden;
-        display: flex;
-        gap: 5px;
+        border-radius: 10px !important;
+        overflow: hidden !important;
+        display: flex !important;
+        gap: 5px !important;
         button {
-            aspect-ratio: 1;
-            border-radius: 50%;
+            aspect-ratio: 1 !important;
+            border-radius: 50% !important;
             background-color: var(--md) !important;
             padding: 0 !important;
-            width: 20px;
-            max-width: 20px;
-            color: var(--cl);
-            font-family: var(--tf);
-            font-weight: 600;
+            width: 20px !important;
+            max-width: 20px !important;
+            color: var(--cl) !important;
+            font-family: var(--tf) !important;
+            font-weight: 600 !important;
             svg {
-                position: relative;
-                width: 20px;
-                top: 50%;
-                left: 50%;
-                translate: -50% -50%;
-                scale: 0.75;
-                opacity: 0.75;
-                fill: var(--cl);
-                transition: 700ms;
+                position: relative !important;
+                width: 20px !important;
+                top: 50% !important;
+                left: 50% !important;
+                translate: -50% -50% !important;
+                scale: 0.75 !important;
+                opacity: 0.75 !important;
+                fill: var(--cl) !important;
+                transition: 700ms !important;
             }
         }
         button:hover svg {
-            transform: rotate(10deg);
-            -webkit-transform: rotate(10deg);
+            transform: rotate(10deg) !important;
+            -webkit-transform: rotate(10deg) !important;
         }
         button:focus-visible {
-            outline-offset: 0;
-            background-color: var(--kb);
+            outline-offset: 0 !important;
+            background-color: var(--kb) !important;
         }
     }
     div:has(button:focus-visible) {
