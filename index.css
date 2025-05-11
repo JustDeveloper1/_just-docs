@@ -282,17 +282,17 @@ input:placeholder-shown {
         right: 15px;
         z-index: 1;
         @media(max-width: 700px) {
-            opacity: 0;
+            display: none;
         }
         input {
             position: absolute;
             right: calc(100% + 10px);
-            opacity: 0;
+            display: none;
             pointer-events: none;
             user-select: none;
             z-index: -1;
             @media(min-width: 1000px) {
-                opacity: 1;
+                display: inline-block;
                 pointer-events: all;
                 user-select: all;
                 z-index: 0;
@@ -401,6 +401,12 @@ main nav {
 nav.left {
     padding-left: var(--mn);
     width: calc(var(--mp) - 5px);
+    @media(max-width: 555px) {
+        translate: -100%;
+    }
+}
+.navleft nav.left {
+    translate: 0%;
 }
 nav.right {
     padding-right: var(--mn);
@@ -513,8 +519,16 @@ nav.right {
     translate: -5px;
     padding-bottom: 50px;
     @media (max-width: 700px) {
-        padding-right: 0px;
+        padding-right: 5px;
     }
+    @media (max-width: 555px) {
+        padding-left: 5px;
+        translate: 0px;
+    }
+}
+.navleft .main {
+    padding-left: var(--mp);
+    translate: -5px;
 }
 main nav ul:has(ul) {
     width: calc(100% - 10px - var(--mn));
@@ -564,6 +578,12 @@ main nav li {
     height: calc(100% + 28px);
     background-color: var(--md);
     translate: -10px;
+    opacity: 0.5;
+    @media(max-width: 555px) {
+        opacity: 0;
+    }
+}
+.navleft .main:before {
     opacity: 0.5;
 }
 blockquote {
@@ -696,39 +716,39 @@ footer {
         height: 20px;
     }
     div {
-        border-radius: 10px !important;
-        overflow: hidden !important;
-        display: flex !important;
-        gap: 5px !important;
+        border-radius: 10px;
+        overflow: hidden;
+        display: flex;
+        gap: 5px;
         button {
-            aspect-ratio: 1 !important;
-            border-radius: 50% !important;
-            background-color: var(--md) !important;
-            padding: 0 !important;
-            width: 20px !important;
-            max-width: 20px !important;
-            color: var(--cl) !important;
-            font-family: var(--tf) !important;
-            font-weight: 600 !important;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            background-color: var(--md);
+            padding: 0;
+            width: 20px;
+            max-width: 20px;
+            color: var(--cl);
+            font-family: var(--tf);
+            font-weight: 600;
             svg {
-                position: relative !important;
-                width: 20px !important;
-                top: 50% !important;
-                left: 50% !important;
-                translate: -50% -50% !important;
-                scale: 0.75 !important;
-                opacity: 0.75 !important;
-                fill: var(--cl) !important;
-                transition: 700ms !important;
+                position: relative;
+                width: 20px;
+                top: 50%;
+                left: 50%;
+                translate: -50% -50%;
+                scale: 0.75;
+                opacity: 0.75;
+                fill: var(--cl);
+                transition: 700ms;
             }
         }
         button:hover svg {
-            transform: rotate(10deg) !important;
-            -webkit-transform: rotate(10deg) !important;
+            transform: rotate(10deg);
+            -webkit-transform: rotate(10deg);
         }
         button:focus-visible {
-            outline-offset: 0 !important;
-            background-color: var(--kb) !important;
+            outline-offset: 0;
+            background-color: var(--kb);
         }
     }
     div:has(button:focus-visible) {
@@ -771,6 +791,9 @@ html.l:not(.a) #l, html:not(.l):not(.a) #d, html.a #a{
     vertical-align: middle;
     align-content: center;
     align-items: center;
+}
+.ios footer div:has(button) {
+    display: none;
 }
 
 h1 {

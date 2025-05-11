@@ -41,6 +41,27 @@ if (scrll) {
     document.documentElement.scrollTo(0, scrll);
 }
 
+let startX;
+function handleSwipeLeft() {
+    document.body.classList.remove('navleft');
+}
+function handleSwipeRight() {
+    document.body.classList.add('navleft');
+}
+document.addEventListener('touchstart', function(event) {
+    startX = event.touches[0].clientX;
+}, false);
+document.addEventListener('touchend', function(event) {
+    const endX = event.changedTouches[0].clientX;
+    const distance = endX - startX;
+
+    if (distance > 50) {
+        handleSwipeRight();
+    } else if (distance < -50) {
+        handleSwipeLeft();
+    }
+}, false);
+
 // theme
 const getnsettheme = () => {
     try {
@@ -139,6 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.classList.add('ios');
     }
 });
+
 } catch (err) {
     alert(err)
 }
