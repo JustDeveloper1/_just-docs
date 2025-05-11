@@ -551,6 +551,10 @@ main nav ul ul {
 main nav li {
     display: block;
 }
+.l .ios .navbar .heading {
+    -webkit-filter: none;
+    filter: none;
+}
 
 .main:before {
     content: '';

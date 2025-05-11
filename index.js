@@ -2,6 +2,12 @@ const page_ = 'p' + window.location.pathname;
 const scrll = localStorage.getItem('s' + page_);
 const theme = localStorage.getItem('t');
 const main_ = 'html > body > main > div#main > div.main';
+function isIOS() {
+    return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+}
+if (isIOS()) {
+    document.body.classList.add('ios');
+}
 
 // navbar + sidebars
 window.addEventListener('scroll', () => {
