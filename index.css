@@ -572,6 +572,12 @@ main nav li {
 nav.left > ul > li > span {
     margin-bottom: 15px;
 }
+.ios nav.right {
+    display: none;
+}
+.ios .main {
+    padding-right: 5px;
+}
 
 .main:before {
     content: '';
