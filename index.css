@@ -795,6 +795,19 @@ html.l:not(.a) #l, html:not(.l):not(.a) #d, html.a #a{
 .ios footer div:has(button) {
     display: none;
 }
+#main small {
+    display: none;
+    opacity: 0.25;
+    width: 100%;
+    text-align: center;
+    @media(max-width: 555px) {
+        display: block;
+    }
+}
+.navleft #main small {
+    display: none;
+}
+
 
 h1 {
     display: block;
